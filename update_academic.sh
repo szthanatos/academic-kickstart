@@ -13,7 +13,7 @@ if [ ! -d .git ]; then
 fi
 
 # Function to update Academic
-function install_update () {
+function install_update () {+
   # Apply any updates
   git submodule update --remote --merge
 
