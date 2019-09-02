@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "RancherOS——容器时代的操作系统"
+title: "RancherOS初步使用小结"
 subtitle: ""
 summary: ""
 authors: []
@@ -38,8 +38,8 @@ projects: []
 
 | 官方说法                             | 瞎翻译                                                                                                    |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Minimalist OS                        | 极简系统 ——当前版本(v1.5.4)镜像也只有146M，还内置了各类虚拟机工具和N个版本的Docker环境                |
-| Comprehensive System Services        | 综合系统服务——所有的系统服务都可以通过Compose文件声明和启动                                    |
+| Minimalist OS                        | 极简系统 ——当前版本(v1.5.4)镜像也只有146M，还内置了各类虚拟机工具和N个版本的Docker环境                    |
+| Comprehensive System Services        | 综合系统服务——所有的系统服务都可以通过Compose文件声明和启动                                               |
 | Improved Security                    | 更安全——没有额外的工具/代码，所有应用都跑在容器里，当然更安全                                             |
 | Up-to-Date Version of Docker & Linux | 集成最新的Docker&Linux发行版——装完系统直接就有Docker用，还是最新的，美滋滋                                |
 | Automated OS Configuration           | 自动化系统配置——使用cloud-init工具解析`cloud-config`文件，统一管理系统级的所有配置，比如网络，docker源... |
@@ -79,6 +79,12 @@ RancherOS的架构也非常简单，除了内核，就是两个Docker。
     一路只有2个选项，是否要安装？Y，是否要重启？N，因为重启比你卸载光驱还快...直接就又进入一个新的临时RancherOS了...
 
 5. 手动`sudo poweroff`，卸载光驱，重启，看到熟悉的牛头LOGO，恭喜完成~
+
+{{% alert note %}}
+如果一定要为rancher设置一个密码的话，将安装命令替换为：
+
+`sudo ros install -c cloud-config.yml -d /dev/sda --append=rancher.password=密码`
+{{% /alert %}}
 
 {{% alert note %}}
 我遇到的一个情况，在Vmware上安装时，临时RancherOS默认没有网，
@@ -271,7 +277,7 @@ disabled pingan-amc
 
 现有的公有云/虚拟化厂商大多支持`cloud-init`工具进行系统配置初始化(某种意义上的事实标准)。cloud-config就是为`cloud-init`服务的。RancherOS在`system-docker`中运行了一个`cloud-init`容器，它会在启动时查找可能位置上的cloud-config文件并依此配置系统配置项。
 
-cloud-config的语法格式就是标准的YAML语法，一个比较完整的cloud-config的示例如下：
+cloud-config的语法格式就是标准的YAML语法，一个我在用的、比较完整的cloud-config的示例如下：
 
 ```yaml
 # 主机名
@@ -279,8 +285,8 @@ hostname: ros-test
 
 # 系统配置
 rancher:
-  # 设置用户rancher的密码，惊喜吧，又能用户名密码登陆了~
-  password: 1234
+  # 替换控制台为alpine，也可以是ubuntu/centos/debian...
+  console: alpine
 
   # 初始Docker源
   bootstrap_docker:
@@ -296,8 +302,10 @@ rancher:
   network:
     interfaces:
       eth0:
+        # IP要是CIDR格式，要是和子网掩码对不上就上不了网
         address: 192.168.0.1/24
-        broadcast: 192.168.0.255
+        # netmask: 255.255.255.0
+        # broadcast: 192.168.0.255
         gateway: 192.168.0.254
         mtu: 1500
         dhcp: false
@@ -306,21 +314,63 @@ rancher:
         - 114.114.114.114
         - 8.8.8.8
 
-  # 扩容现有磁盘不要用fdisk，除非你想把系统格式化了，用这个就能调整磁盘大小
-  resize_device: /dev/sda
+  # # 扩容现有磁盘不要用fdisk，除非你想把系统格式化了，用这个就能调整磁盘大小
+  # resize_device: /dev/sda
 
 # 可登录的机器公钥
 ssh_authorized_keys:
   - ssh-rsa ...
   - ssh-rsa ...
 
-# 挂载新磁盘
-mounts:
-- ["/dev/vdb", "/mnt/s", "ext4", ""]
+# # 挂载新磁盘
+# mounts:
+# - ["/dev/vdb", "/mnt/s", "ext4", ""]
+
+# 写文件
+write_files:
+  # 修改apk使用国内镜像
+  - path: /etc/apk/repositories
+    permissions: "0755"
+    owner: root
+    content: |
+      https://mirrors.ustc.edu.cn/alpine/latest-stable/main
+      https://mirrors.ustc.edu.cn/alpine/latest-stable/community
+
+  # 确保ssh连接时会读取.bashrc
+  - path: /home/rancher/.bash_profile
+    permissions: "0755"
+    owner: rancher
+    content: |
+      # If the shell is interactive and .bashrc exists, get the aliases and functions
+      if [[ $- == *i* && -f ~/.bashrc ]]; then
+          . ~/.bashrc
+      fi
+
+  # 配置.bashrc
+  - path: /home/rancher/.bashrc
+    permissions: "0755"
+    owner: rancher
+    content: |
+      # .bashrc
+      # User specific aliases and functions
+      PS1="\[\e[37m\][\[\e[32m\]\u\[\e[37m\]@\h \[\e[36m\]\w\[\e[0m\]]\\$ "
+
+      alias  d="docker "
+      alias di="docker image"
+      alias dc="docker container"
+      alias dv="docker volumn"
+      alias dn="docker netwrok"
+
+      # Source global definitions
+      if [ -f /etc/bashrc ]; then
+              . /etc/bashrc
+      fi
 
 # 启动时执行命令
 runcmd:
-- [ touch, /home/rancher/test1 ]
-- echo "test" > /home/rancher/test2
+  #   # 两种写法
+  #   - [touch, /home/rancher/test1]
+  #   - echo "test" > /home/rancher/test2
+  - apk update
 
 ```
