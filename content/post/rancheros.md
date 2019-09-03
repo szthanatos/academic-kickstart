@@ -336,6 +336,26 @@ write_files:
       https://mirrors.ustc.edu.cn/alpine/latest-stable/main
       https://mirrors.ustc.edu.cn/alpine/latest-stable/community
 
+  # 设置CST时区
+  - path: /etc/profile
+    permissions: "0755"
+    owner: root
+    content: |
+      export CHARSET=UTF-8
+      export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      export PAGER=less
+      # 显示样式
+      export PS1="\[\e[37m\][\[\e[32m\]\u\[\e[37m\]@\h \[\e[36m\]\w\[\e[0m\]]\\$ "
+      # 时区
+      export TZ='CST-8'
+      umask 022
+
+      for script in /etc/profile.d/*.sh ; do
+              if [ -r $script ] ; then
+                      . $script
+              fi
+      done
+
   # 确保ssh连接时会读取.bashrc
   - path: /home/rancher/.bash_profile
     permissions: "0755"
@@ -353,8 +373,6 @@ write_files:
     content: |
       # .bashrc
       # User specific aliases and functions
-      PS1="\[\e[37m\][\[\e[32m\]\u\[\e[37m\]@\h \[\e[36m\]\w\[\e[0m\]]\\$ "
-
       alias  d="docker "
       alias di="docker image"
       alias dc="docker container"
@@ -371,6 +389,9 @@ runcmd:
   #   # 两种写法
   #   - [touch, /home/rancher/test1]
   #   - echo "test" > /home/rancher/test2
+  # 开机更新apk源
   - apk update
+  # 启动定时任务服务
+  - crond
 
 ```
