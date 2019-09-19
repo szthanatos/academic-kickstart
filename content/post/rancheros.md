@@ -279,6 +279,10 @@ disabled pingan-amc
 
 cloud-config的语法格式就是标准的YAML语法，一个我在用的、比较完整的cloud-config的示例如下：
 
+{{% alert note %}}
+使用时请删除掉中文注释...给别人演示的时候懒得删注释结果validate没问题，但是配置就是不生效...
+{{% /alert %}}
+
 ```yaml
 # 主机名
 hostname: ros-test
