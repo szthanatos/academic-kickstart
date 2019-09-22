@@ -294,13 +294,13 @@ rancher:
 
   # 初始Docker源
   bootstrap_docker:
-    registry_mirror: "https://docker.mirrors.ustc.edu.cn/"
+    registry_mirror: "http://dockerhub.azk8s.cn/"
   # 系统Docker源
   system_docker:
-    registry_mirror: "https://docker.mirrors.ustc.edu.cn/"
+    registry_mirror: "http://dockerhub.azk8s.cn/"
   # 用户Docker源
   docker:
-    registry_mirror: "https://docker.mirrors.ustc.edu.cn/"
+    registry_mirror: "http://dockerhub.azk8s.cn/"
 
   # 网络
   network:
