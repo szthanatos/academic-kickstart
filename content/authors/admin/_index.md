@@ -22,8 +22,8 @@ bio: You see, madness, as you know, is like gravity.
 
 interests:
 - act as a gargoyle on the roof
-- hockey chest
-- superbat
+- wear hockey pads
+- bats
 
 education:
   courses:
