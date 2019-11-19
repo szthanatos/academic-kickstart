@@ -87,14 +87,10 @@ edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", repo_branch 
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "Lex_Wayne@Gotham.bat"
 phone = "888 888 88 88"
-<<<<<<< HEAD
-address = "Wayne Manor B3, 1007 Mountain Drive, Gotham, NJ 12345, USA"
-=======
->>>>>>> 711d7ea531d04e213961efc841f056f002b5887a
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
-address = {street = "450 Serra Mall", city = "Stanford", region = "CA", postcode = "94305", country = "United States", country_code = "US"}
+address = {street = "Wayne Manor B3, 1007 Mountain Drive", city = "Gotham", region = "NJ", postcode = "12345", country = "United States", country_code = "USA"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
