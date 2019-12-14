@@ -1,16 +1,16 @@
 ---
 # Display name
-name: 苏展
+name: 郭柿子小可爱
 
 # Username (this should match the folder name)
 authors:
-- sz
+- gpp
 
 # Is this the primary user of the site?
 superuser: false
 
 # Role/position
-role: After all that we've been through <p>Still believe in magic? <p>Well, yes, I do
+role: 可爱的程序媛一枚
 
 # Organizations/Affiliations
 # organizations:
@@ -18,18 +18,18 @@ role: After all that we've been through <p>Still believe in magic? <p>Well, yes,
 #   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: 机智的苏先锋如今更加机智.
+bio: 我真的不认识那个中二病的DC漫画爱好者啦（╯‵□′）╯︵┴─┴
 
 interests:
-- 后摇
-- 推理
-- 数码产品
+- 摸鱼
+- 摸鱼
+- 摸...
 
 education:
   courses:
-  - course: 计算机科学与技术 本科
-    institution: 天津工业大学
-    year: 2014
+  - course: 经济学 本科
+    institution: 河北地质大学
+    year: 2017
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
@@ -55,7 +55,7 @@ education:
 #   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: "su_working@163.com"
+email: "gpp0725@outlook.com"
   
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.  
