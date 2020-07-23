@@ -21,11 +21,7 @@ function view_update () {
 }
 
 # Function to update Academic
-<<<<<<< HEAD
-function install_update () {+
-=======
 function do_update () {
->>>>>>> 711d7ea531d04e213961efc841f056f002b5887a
   # Apply any updates
   git submodule update --remote --merge
 

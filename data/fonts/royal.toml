@@ -1,0 +1,11 @@
+# Font style metadata
+name = "Royal"
+
+# Optional Google font URL
+google_fonts = "Montserrat:400,700|Noto+Sans+SC:400,400italic,700|Inconsolata"
+
+# Font families
+heading_font = "Montserrat"
+body_font = "Noto Sans SC"
+nav_font = "Noto Sans SC"
+mono_font = "Inconsolata"

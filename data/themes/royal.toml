@@ -1,0 +1,18 @@
+# Theme metadata
+name = "Royal"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#4169E1"
+
+# Menu
+menu_primary = "#fff" # 顶部菜单栏背景色
+menu_text = "#272935" # 菜单文字颜色
+menu_text_active = "#4169E1" # 标题被选中颜色
+menu_title = "#272935" # 标题颜色
+
+# Home sections
+home_section_odd = "rgb(255, 255, 255)" # 奇数节
+home_section_even = "rgb(247, 247, 247)" # 偶数节
