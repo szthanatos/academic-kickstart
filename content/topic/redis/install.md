@@ -50,7 +50,7 @@ weight: 1
 
 一个最小的redis.conf配置如下：
 
-```conf
+```properties
 # 节点监听的端口号
 port {your_port}
 # 是否以进程守护方式(后台)运行
@@ -69,7 +69,7 @@ pidfile /var/run/redis_{your_port}.pid
 
 集群需要在redis.conf中配置以下部分：
 
-```conf
+```properties
 # 以集群模式启动
 cluster-enabled yes
 # 集群配置存放的文件名，一般为node-端口号.conf

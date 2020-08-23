@@ -98,7 +98,7 @@ rancher集群的配置和能管理的集群规模之间的关系如下：
 
 在`loadbalance`主机上编写nginx.conf配置文件：
 
-```conf
+```properties
 worker_processes 4;
 worker_rlimit_nofile 40000;
 

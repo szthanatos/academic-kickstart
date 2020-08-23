@@ -164,7 +164,7 @@ export KAFKA_HEAP_OPTS="-Xms6g -Xmx6g -XX:MetaspaceSize=96m -XX:+UseG1GC -XX:Max
 
 _**ps：** 虽然看起来很激进，但是以上配置参照的是LinkIn高峰时期最繁忙的集群:_
 
-```conf
+```properties
 60 brokers
 50k partitions (replication factor 2)
 800k messages/sec in
