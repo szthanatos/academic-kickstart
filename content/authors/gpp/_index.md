@@ -1,6 +1,6 @@
 ---
 # Display name
-name: 郭柿子小可爱
+title: 郭柿子小可爱
 
 # Username (this should match the folder name)
 authors:

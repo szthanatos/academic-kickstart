@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "加速ssh连接"
+title: "加速 ssh 连接"
 subtitle: ""
 summary: ""
 authors: []
@@ -29,11 +29,11 @@ projects: []
 ---
 ## 报错信息
 
-之前运维给做了几台测试服务器，远程连接的时候速度特别慢，ssh之后需要接近1分钟才能连上。
+之前运维给做了几台测试服务器，远程连接的时候速度特别慢，ssh 之后需要接近 1 分钟才能连上。
 
 ## 原因
 
-使用`ssh -v <服务器>` 显示连接过程：
+使用 `ssh -v <服务器>` 显示连接过程：
 
 ```bash
 $ ssh -v 123.456.789.0
@@ -97,38 +97,38 @@ debug1: Trying private key: /root/.ssh/id_ed25519
 debug1: Next authentication method: password # 3
 ```
 
-发现卡住的位置是`debug1: Next authentication method: gssapi-with-mic`附近。
+发现卡住的位置是 `debug1: Next authentication method: gssapi-with-mic` 附近。
 
-证明是由于`gssapi`认证带来的问题。
+证明是由于 `gssapi` 认证带来的问题。
 
 从网上找到相关的解释：
 
-> 1. GSSAPI(Generic Security Services Application Programming Interface)是一套通用网络安全系统接口。
+> 1. GSSAPI(Generic Security Services Application Programming Interface) 是一套通用网络安全系统接口。
 > 该接口是对各种不同的客户端服务器安全机制的封装，以消除安全接口的不同，降低编程难度。
 >
-> 2. OpenSSH在用户登录的时候会验证IP，它根据用户的IP使用反向DNS找到主机名，再使用DNS找到IP地址，最后匹配一下登录的IP是否合法。
+> 2. OpenSSH 在用户登录的时候会验证 IP，它根据用户的 IP 使用反向 DNS 找到主机名，再使用 DNS 找到 IP 地址，最后匹配一下登录的 IP 是否合法。
 
-进行身份认证的时候，OpenSSH虽然说的是`publickey,gssapi-keyex,gssapi-with-mic,password`，
+进行身份认证的时候，OpenSSH 虽然说的是 `publickey,gssapi-keyex,gssapi-with-mic,password`，
 
 但默认顺序是：`gssapi-with-mic` → `hostbased` → `publickey` → `keyboard-interactive` → `password`
 
-上面连接过程我也标出了0123，实际顺序的确如此。
+上面连接过程我也标出了 0123，实际顺序的确如此。
 
-`gssapi`的认证是基于`Kerberos`的，没见到人用过，
+`gssapi` 的认证是基于 `Kerberos` 的，没见到人用过，
 
-另一方面，客户端反向DNS的过程也会在连接DNS服务器/查询客户端域名(没域名可就会一层层DNS查上去)上花费时间。
+另一方面，客户端反向 DNS 的过程也会在连接 DNS 服务器 / 查询客户端域名 (没域名可就会一层层 DNS 查上去) 上花费时间。
 
 ## 解决办法
 
-客户端，编辑`/etc/ssh/ssh_config`文件：
+客户端，编辑 `/etc/ssh/ssh_config` 文件：
 
-- 方式1：将`GSSAPIAuthentication`改为no；
-- 方式2：编辑/新增`PreferredAuthentications`为publickey或者password，改变认证优先度;
+- 方式 1：将 `GSSAPIAuthentication` 改为 no；
+- 方式 2：编辑 / 新增 `PreferredAuthentications` 为 publickey 或者 password，改变认证优先度;
 
-服务端，编辑`/etc/ssh/sshd_config`文件：
+服务端，编辑 `/etc/ssh/sshd_config` 文件：
 
-1. 将`UseDNS`改为no；
-2. (可选)将`GSSAPIAuthentication`改为no(所有连接都不做gssapi认证了)；
-3. 重启sshd服务；
+1. 将 `UseDNS` 改为 no；
+2. (可选) 将 `GSSAPIAuthentication` 改为 no(所有连接都不做 gssapi 认证了)；
+3. 重启 sshd 服务；
 
-实际效果，关闭`GSSAPIAuthentication`让连接时间从1分钟下降到8秒左右，关闭`UseDNS`后几乎接近秒连。
+实际效果，关闭 `GSSAPIAuthentication` 让连接时间从 1 分钟下降到 8 秒左右，关闭 `UseDNS` 后几乎接近秒连。

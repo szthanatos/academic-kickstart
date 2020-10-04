@@ -28,15 +28,15 @@ image:
 projects: []
 ---
 
-对列表的去重很简单，`set()`一下再`list()`回来就可以了，但是如果要保留原始列表的顺序呢？
+对列表的去重很简单，`set()` 一下再 `list()` 回来就可以了，但是如果要保留原始列表的顺序呢？
 
-举例，对`["b", "b", "c", "a", "c", "b", "a", "b"]`这个列表进行原序去重，得到结果应该是`['b', 'c', 'a']`。
+举例，对 `["b", "b", "c", "a", "c", "b", "a", "b"]` 这个列表进行原序去重，得到结果应该是 `['b', 'c', 'a']`。
 
 有下面这几种写法：
 
 #### 二次排序
 
-也就是对去重结果再按原列表sort一次：
+也就是对去重结果再按原列表 sort 一次：
 
 ```python
 def sort_1(list_in):
@@ -56,7 +56,7 @@ def sort_2(list_in):
 
 ##### 有序字典
 
-使用`OrderedDict`排序：
+使用 `OrderedDict` 排序：
 
 ```python
 def sort_3(list_in):
@@ -65,16 +65,16 @@ def sort_3(list_in):
 
 #### defaultdict
 
-类似的,我们使用`defaultdict`进行排序：
+类似的, 我们使用 `defaultdict` 进行排序：
 
 ```python
 def sort_4(list_in):
     return list(collections.defaultdict.fromkeys(list_in).keys())
 ```
 
-#### 直接使用dict
+#### 直接使用 dict
 
-在python3.6之前， `dict`的`key`的顺序并不保证一定是插入顺序，所以只有在python3.6之后才可以直接用`dict`实现这个操作；
+在 python3.6 之前， `dict` 的 `key` 的顺序并不保证一定是插入顺序，所以只有在 python3.6 之后才可以直接用 `dict` 实现这个操作；
 
 ```python
 def sort_5(list_in):
@@ -138,4 +138,4 @@ if __name__ == '__main__':
 | sort_4 | 0.734    |
 | sort_5 | 0.698    |
 
-可见，python3.6之后dict是最好的原序去重办法，3.6之前用defaultdict吧。
+可见，python3.6 之后 dict 是最好的原序去重办法，3.6 之前用 defaultdict 吧。
