@@ -2,7 +2,7 @@
 name = "Royal"
 
 # Optional Google font URL
-google_fonts = "Montserrat:400,700|Noto+Sans+SC:400,400italic,700|Inconsolata"
+google_fonts = "Montserrat:400,700|Noto+Sans+SC:400,400italic,700|Inconsolata:400,700"
 
 # Font families
 heading_font = "Montserrat"
