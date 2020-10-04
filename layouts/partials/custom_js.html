@@ -1,0 +1,10 @@
+{{ partial "gitter" . }}
+
+{{ if site.Params.comments.engine | and (index site.Params.comments.commentable .Type) | and (ne .Params.commentable false) | or .Params.commentable }}
+<section id="comments">
+    {{ if eq site.Params.comments.engine 3 }}
+      {{ partial "comments/gitalk" . }}
+
+    {{ end }}
+  </section>
+  {{ end }}
