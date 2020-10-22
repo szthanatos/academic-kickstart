@@ -1,8 +1,8 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "解决 Error connection reset by peer"
-linktitle: "connection reset by peer"
+title: "connection reset by peer"
+# linktitle: "connection reset by peer"
 toc: true
 type: book
 date: 2019-06-16T23:06:41+08:00

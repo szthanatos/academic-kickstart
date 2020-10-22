@@ -5,7 +5,7 @@ toc: true
 type: book
 date: 2019-03-18T15:04:35+08:00
 draft: false
-weight: 30
+weight: 60
 ---
 
 redis性能优化可以从设计，使用，运维三个层面上着手：
@@ -21,3 +21,5 @@ redis性能优化可以从设计，使用，运维三个层面上着手：
   - **部署**：物理层面的调优
 
 下面具体的谈一下几个tips。
+
+{{<list_children>}}

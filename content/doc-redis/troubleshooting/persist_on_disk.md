@@ -1,6 +1,6 @@
 ---
-title: "解决 not able to persist on disk"
-linktitle: "not able to persist on disk"
+title: "not able to persist on disk"
+# linktitle: "not able to persist on disk"
 toc: true
 type: book
 date: "2018-05-18T11:42:50+08:00"

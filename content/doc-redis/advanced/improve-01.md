@@ -5,6 +5,7 @@ toc: true
 type: book
 date: 2019-03-18T15:04:35+08:00
 draft: false
+weight: 61
 ---
 
 ## 数据结构

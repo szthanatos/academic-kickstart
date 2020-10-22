@@ -5,7 +5,7 @@ toc: true
 type: book
 date: 2018-08-30T21:26:18+08:00
 draft: false
-weight: 20
+weight: 21
 ---
 
 ## 集群信息
