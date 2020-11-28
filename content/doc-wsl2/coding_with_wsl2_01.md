@@ -13,7 +13,7 @@ weight: 10
 
 > 适用于 Linux 的 Windows 子系统可让开发人员按原样运行 GNU/Linux 环境 - 包括大多数命令行工具、实用工具和应用程序 - 且不会产生传统虚拟机或双启动设置开销。
 
-然而现在出的 Wsl2 是基于 Hyper-V 虚拟机的...
+然而现在出的 WSL2 是基于 Hyper-V 虚拟机的...
 
 ## 什么是 WSL 2
 
@@ -47,7 +47,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 ### 更新内核
 
-目前版本的 Win10 需要手动更新 Wsl2 内核，前往 [下载适用于 x64 计算机的最新 WSL2 Linux 内核](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi) 下载 msi 文件手动更新。
+目前版本的 Win10 需要手动更新 WSL2 内核，前往 [下载适用于 x64 计算机的最新 WSL2 Linux 内核](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi) 下载 msi 文件手动更新。
 
 _ARM 平台前往 [下载适用于 ARM64 计算机的最新 WSL2 Linux 内核](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi)_
 
@@ -59,9 +59,9 @@ _ARM 平台前往 [下载适用于 ARM64 计算机的最新 WSL2 Linux 内核](h
 wsl --set-default-version 2
 ```
 
-让未来的 Linux 都默认以 Wsl2 形式安装。
+让未来的 Linux 都默认以 WSL2 形式安装。
 
-现有 Wsl 虚拟机也可以通过：
+现有 WSL 虚拟机也可以通过：
 
 ```powershell
 # 获取现有 wsl 版本信息
@@ -71,7 +71,7 @@ wsl --list --verbose
 wsl --set-version <distribution name> <versionNumber>
 ```
 
-升级到 Wsl2 。
+升级到 WSL2 。
 
 ### 安装 Linux 系统
 
@@ -98,6 +98,40 @@ wsl --set-version <distribution name> <versionNumber>
 
 ![安装](https://docs.microsoft.com/zh-cn/windows/wsl/media/ubuntuinstall.png)
 
+## 移动安装位置（可选）
+
+目前 WSL 不支持设置安装路径，使用一段时间后体积会膨胀到 10G+ ，可以通过开源工具 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) 实现将 Linux 安装到任意位置，或者将现有 Linux 子系统移动到任意位置。
+
+### 安装 LxRunOffline
+
+[Scoop](https://scoop.sh/) 是一个 Window 命令行包管理器，可以提供类似 apt/yum 的体验。
+
+通过 Scoop 安装 LxRunOffline 方法如下：
+
+```powershell
+# 在 Powershell 中执行
+set-executionpolicy remotesigned -scope currentuser
+iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+scoop bucket add extras
+scoop install lxrunoffline
+```
+
+或者你可以直接下载安装二进制文件，之后运行 `regsvr32 LxRunOfflineShellExt.dll` 完成。
+
+### 移动
+
+```powershell
+# 在 Powershell 中执行
+# 查看所有已安装的发行版
+lxrunoffline gd
+
+# 移动已存在发行版， 路径格式类似于 D:\wsl\Ubuntu-18.04
+LxRunOffline m -n <发行版名称> -d < 路径 >
+
+# 等待一段时间完成移动，查看发行版当前位置
+LxRunOffline di -n <发行版名称>
+```
+
 ## 常用操作
 
 ### wsl 命令
@@ -112,9 +146,9 @@ wsl --set-version <distribution name> <versionNumber>
 
 ### 网络
 
-WSL2 相当于独立虚拟机，而 Wsl1 是和 Windows 复用同一个网络的。
+WSL2 相当于独立虚拟机，而 WSL1 是和 Windows 复用同一个网络的。
 
-然后和一般宿主机虚拟机略微相反，从 Windows 可以通过 `localhost` 访问 Wsl 上的服务，反之则不行。
+然后和一般宿主机虚拟机略微相反，从 Windows 可以通过 `localhost` 访问 WSL 上的服务，反之则不行。
 
 想要访问 Windows 上的服务，可以使用命令
 
@@ -128,16 +162,16 @@ ip route | grep default | awk '{print $3}'
 
 ### 文件系统
 
-Wsl1 的时候，文件目录位于
+WSL1 的时候，文件目录位于
 
 - Ubuntu: `%localappdata%\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs`
 - Ubuntu18.04: `%localappdata%\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs`
 
-Wsl2 可以直接通过 `\\wsl$` 在文件管理器中查看到网络位置上的 Wsl 虚拟机，Ubuntu 就是 `\\wsl$\Ubuntu`。
+WSL2 可以直接通过 `\\wsl$` 在文件管理器中查看到网络位置上的 WSL 虚拟机，Ubuntu 就是 `\\wsl$\Ubuntu`。
 
-或者你可以从 Wsl2 中直接打开当前目录，直接在终端里调用 `explorer.exe .` 就行了，非常 cool~
+或者你可以从 WSL2 中直接打开当前目录，直接在终端里调用 `explorer.exe .` 就行了，非常 cool~
 
-Windows 的磁盘在 Wsl 中都表示为 `/mnt/c|d|e...`，可以看，但是操作还是尽量拷贝到 Wsl 目录下，因为性能损失巨大。
+Windows 的磁盘在 WSL 中都表示为 `/mnt/c|d|e...`，可以看，但是操作还是尽量拷贝到 WSL 目录下，因为性能损失巨大。
 
 ## GPU
 
