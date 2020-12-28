@@ -296,7 +296,7 @@ highlight_superuser = false
 ############################
 [cms]
  # See https://sourcethemes.com/academic/docs/install/
- netlify_cms = false
+ netlify_cms = true
   
 ############################
 ## Icon Pack Extensions
