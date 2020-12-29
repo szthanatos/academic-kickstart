@@ -1,6 +1,6 @@
 ---
 title: "专题"
-layout: docs  # Do not modify.
+layout: pages  # Do not modify.
 
 # Optional header image (relative to `static/img/` folder).
 header:
@@ -8,10 +8,4 @@ header:
   image: ""
 ---
 
-[使用 WSL2 作为你的开发环境](../doc-wsl2/)
-
-[Redis 30 分钟指北](../doc-redis/)
-
-[Kafka 30 分钟指北](../doc-kafka/)
-
-[Docker 30 分钟指北](../doc-docker/)
+[指北系列指南](../post/incomplete-guide)

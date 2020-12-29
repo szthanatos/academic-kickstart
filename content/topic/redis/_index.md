@@ -1,5 +1,4 @@
 ---
-
 title: Redis 30 分钟指北
 linktitle: 简介
 summary: 关于 Redis，看完你就知道他们都在逼逼什么了。

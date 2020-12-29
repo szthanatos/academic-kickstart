@@ -2,8 +2,8 @@
 title: 使用 WSL2 作为你的开发环境
 linktitle: 介绍
 summary: Wsl2+Ubuntu+Zsh+Tmux+Docker
-date: "2018-09-09T00:00:00Z"
-lastmod: "2018-09-09T00:00:00Z"
+# date: "2018-09-09T00:00:00Z"
+lastmod: "2020-09-09T00:00:00Z"
 draft: false  # Is this a draft? true/false
 toc: true  # Show table of contents? true/false
 type: book  # Do not modify.
