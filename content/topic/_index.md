@@ -1,11 +1,8 @@
 ---
-title: "专题"
-layout: pages  # Do not modify.
+title: Courses
+type: page
 
-# Optional header image (relative to `static/img/` folder).
-header:
-  caption: ""
-  image: ""
+view: 3
 ---
 
 [指北系列指南](../post/incomplete-guide)

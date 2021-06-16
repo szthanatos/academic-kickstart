@@ -8,7 +8,7 @@ weight = 10  # Order that this section will appear.
 title = "氪石实验室"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-hero_media = "icon.png"
+hero_media = "icon-bat.png"
 
 [design.background]
   # Apply a background color, gradient, or image.

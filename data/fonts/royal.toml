@@ -2,10 +2,10 @@
 name = "Royal"
 
 # Optional Google font URL
-google_fonts = "Montserrat:400,700|Noto+Sans+SC:400,400italic,700|Inconsolata:400,700"
+google_fonts = "family=Noto+Sans+SC&family=JetBrains+Mono"
 
 # Font families
-heading_font = "Montserrat"
+heading_font = "Noto Sans SC"
 body_font = "Noto Sans SC"
 nav_font = "Noto Sans SC"
-mono_font = "Inconsolata"
+mono_font = "JetBrains Mono"
