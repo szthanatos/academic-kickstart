@@ -1,5 +1,5 @@
 ---
-title: 使用 WSL2 作为你的开发环境
+title: WSL2 开发环境 30 分钟指北
 linktitle: 介绍
 summary: Wsl2+Ubuntu+Zsh+Tmux+Docker
 # date: "2018-09-09T00:00:00Z"

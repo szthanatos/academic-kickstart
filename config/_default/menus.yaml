@@ -8,9 +8,9 @@ main:
     url: '#hero'
     weight: 10
   - name: 笔记
-    url: '#posts'
+    url: 'post'
     weight: 20
-  - name: 指北
+  - name: 专栏
     url: 'topic'
     weight: 30
 

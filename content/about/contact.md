@@ -8,7 +8,7 @@ weight = 15  # Order that this section will appear.
 title = "联系方式"
 subtitle = ""
 
-email = "su_working@163.com"
+email = "zhan_su@outlook.com"
 address = "北京市海淀区知春路中海实业大厦"
 
 # Automatically link email and phone?
