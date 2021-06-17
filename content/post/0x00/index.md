@@ -16,11 +16,11 @@ draft: false
 # Placement options: 1 = Full column width, 2 = Out-set, 3 = Screen-width
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  placement: 1
-  caption: ""
-  focal_point: "Smart"
-  preview_only: false
+# image:
+#   placement: 3
+#   caption: ""
+#   focal_point: "Smart"
+#   preview_only: false
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -28,6 +28,10 @@ image:
 #   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
 #   Otherwise, set `projects = []`.
 projects: []
+
+header:
+  image: "bat-cave.png"
+  caption: ""
 ---
 
 这是我第四次，也可能是我最后一次博客迁移 (flag 已立←_←)。
