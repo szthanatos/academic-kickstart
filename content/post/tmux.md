@@ -42,7 +42,7 @@ Tmux 是一个终端复用软件，默认的 Linux 终端一个会话只能干�
 
 见图
 
-![Tmux 页面](/media/tmux.jpg)
+![Tmux 页面](https://i.loli.net/2021/06/17/Yc5AbRow7niOevt.jpg)
 
 - `Session`：输入 tmux 后就创建了一个会话，一个会话是一组窗体的集合；
 - `Window`：会话中一个可见的窗口；

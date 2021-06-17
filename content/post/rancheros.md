@@ -50,7 +50,7 @@ projects: []
 
 把这些七七八八的都去掉，最后剩下：一个 Linux 内核 + Docker 环境 + 精简但是统一的配置管理 = RancherOS
 
-![RancherOS 架构](/media/rancheroshowitworks.png)
+![RancherOS 架构](https://i.loli.net/2021/06/17/AZIUHLks7Jm1Mqc.png)
 
 RancherOS 的架构也非常简单，除了内核，就是两个 Docker。
 

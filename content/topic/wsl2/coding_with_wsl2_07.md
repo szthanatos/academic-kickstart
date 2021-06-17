@@ -34,7 +34,7 @@ Docker Desktop 重启之后，在任意终端 (Windows & Linux) 都可以执行 
 
 在 `设置`-`构建、执行、部署` 下找到 `Docker` 配置，可以直接连接 Docker for window：
 
-![连接 docker](https://raw.githubusercontent.com/szthanatos/image-host/master/pycharm-docker.png)
+![连接 docker](https://i.loli.net/2021/06/17/INkgm39Qu1EnjTl.png)
 
 ## 编写环境镜像
 
@@ -100,7 +100,7 @@ CMD ["/usr/sbin/sshd", "-D"]
 
 点击侧边绿色三个箭头的图标即可使用 Dockerfile 部署。
 
-![dockerfile 部署](https://raw.githubusercontent.com/szthanatos/image-host/master/pycharm-dockerfile.png)
+![dockerfile 部署](https://i.loli.net/2021/06/17/zf5aFIpurCqyAQ6.png)
 
 ## 参考
 

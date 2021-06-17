@@ -19,7 +19,7 @@ Ubuntu 自带 Tmux，无需额外安装。
 
 ## 概念
 
-![tmux](https://raw.githubusercontent.com/szthanatos/image-host/master/tmux.jpg)
+![tmux](https://i.loli.net/2021/06/17/Yc5AbRow7niOevt.jpg)
 
 Tmux 有这么几个概念：
 

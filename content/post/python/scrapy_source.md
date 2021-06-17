@@ -34,7 +34,7 @@ projects: []
 
 ## 数据流程
 
-![Data flow](/media/scrapy_architecture.png)
+![Data flow](https://i.loli.net/2021/06/17/uQSltfjKVO3Xo6g.png)
 
 1. ` 引擎 ` 从 ` 爬虫 ` 中获取待采集的初始化 **请求**(将待访问的 url 用 Requests 对象包裹起来)；
 2. ` 引擎 ` 把 **请求** 放入 ` 调度器 ` 中，并向 ` 调度器 ` 申请下一个待采集的 **请求**(这不是多此一举，两次的 **请求** 可能不一样，并且执行起来也是异步不相干的)；

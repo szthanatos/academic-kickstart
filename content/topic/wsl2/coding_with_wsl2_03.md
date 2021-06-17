@@ -129,7 +129,7 @@ sudo service ssh restart
 
 2. 在 windows 搜索栏搜索 `计划任务`，或者快速运行窗口输入 `taskschd.msc`，打开任务计划程序
 
-   ![计划任务](https://raw.githubusercontent.com/szthanatos/image-host/master/task-scheduler.png)
+   ![计划任务](https://i.loli.net/2021/06/17/U6citdO2upQAW4R.png)
 
 3. 创建任务，勾选 `隐藏`，配置改为 win10
 

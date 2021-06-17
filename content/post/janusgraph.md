@@ -142,7 +142,7 @@ gremlin> GraphOfTheGodsFactory.load(graph)
 
 示例数据描述了一部分希腊诸神以及他们居住的诸神殿的相关关系。
 
-![graph-of-the-gods](/media/graph-of-the-gods-2.png)
+![graph-of-the-gods](https://i.loli.net/2021/06/17/6bKJYdog2eClRBV.png)
 
 | 符号         | 含义                     |
 | ------------ | ------------------------ |

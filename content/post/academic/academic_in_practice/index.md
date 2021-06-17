@@ -5,7 +5,7 @@ title: "Academic 实现 Github Page 个人博客"
 subtitle: ""
 summary: ""
 authors: []
-tags: ['Hugo']
+tags: ['Hugo', 'Academic']
 categories: []
 date: 2018-12-09T16:34:42+08:00
 lastmod: 2018-12-09T16:34:42+08:00
@@ -17,11 +17,8 @@ draft: false
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: ""
-  focal_point: ""
+  focal_point: "Smart"
   preview_only: false
-  # [header]
-  #   image = "academic_header.jpg"
-  #   caption = ""
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -293,7 +290,7 @@ fi
 
 显示的效果是在文章列表页，文章右侧有一个缩略图；打开文章，标题默认会居左，右边是精选图：
 
-![example](/media/featured_image_example.png)
+![example](https://i.loli.net/2021/06/17/w9J1YNL7zDE26od.png)
 
 ### 给文章添加头部背景
 

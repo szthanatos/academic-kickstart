@@ -32,4 +32,4 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 Pycharm 2019.1.X+ 版本已经支持直接连接 wsl 的 python 环境，无需通过 ssh
 
-![pycharm 添加 wsl 解释器](https://raw.githubusercontent.com/szthanatos/image-host/master/pycharm-wsl.png)
+![pycharm 添加 wsl 解释器](https://i.loli.net/2021/06/17/olEGLadJr9tCOH4.png)

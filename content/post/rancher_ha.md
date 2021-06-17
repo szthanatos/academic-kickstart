@@ -34,7 +34,7 @@ projects: []
 
 rancher ha 推荐的架构是单独搭建一个 K8s 集群部署 Rancher，然后再用这个 Rancher 去管理其他的 K8s 集群。
 
-![推荐架构](/media/rancher2ha.png)
+![推荐架构](https://i.loli.net/2021/06/17/lD9wLiNnOgrVhIs.png)
 
 rancher 集群的配置和能管理的集群规模之间的关系如下：
 

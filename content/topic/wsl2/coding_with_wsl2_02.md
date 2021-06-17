@@ -11,7 +11,7 @@ weight: 20
 
 介绍就两个字，**颜值**。
 
-![颜值](https://raw.githubusercontent.com/szthanatos/image-host/master/windows-terminal.PNG)
+![颜值](https://i.loli.net/2021/06/17/rZRdWo21TfsFDvz.jpg)
 
 安装方式同样是 [Microsoft Store](https://aka.ms/wslstore)。
 

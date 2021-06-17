@@ -24,9 +24,9 @@ Docker 最初是在 Ubuntu 12.04 上以 [Go 语言](https://golang.org/) 进行�
 
 Docker 是一种 **容器化技术** ，类似虚拟机的概念，但不同的是传统虚拟机是在虚拟硬件的基础上，完整模拟一整个操作系统，而 Docker 是以单个应用（容器）为单位进行虚拟。
 
-![传统虚拟化](/media/virtualization.png)
+![传统虚拟化](https://i.loli.net/2021/06/17/PFhKS4M68AO7BVQ.png)
 
-![Docker](/media/docker.png)
+![Docker](https://i.loli.net/2021/06/17/a2Hp1ZVJoIA4Ocv.png)
 
 ### Docker 特点
 
@@ -108,7 +108,7 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
 ### 生命周期
 
 结合上面的概念，这里有一张图比较好的概括了整个 Docker 工作的生命周期（以及主要命令）。
-![生命周期](/media/period.png)
+![生命周期](https://i.loli.net/2021/06/17/RIZ3S8jPrgBo5ve.png)
 
 ## 安装配置
 
@@ -282,7 +282,7 @@ sudo service docker start|stop
 
 以 redis 为例，我们从 [Docker Hub](https://hub.docker.com/explore/) 上获取官方镜像到本地：
 
-![Docker hub redis](/media/hub-redis.jpg)
+![Docker hub redis](https://i.loli.net/2021/06/17/rxgkEdmeJuSHX38.jpg)
 
 ```bash
 docker pull redis
@@ -507,7 +507,7 @@ docker run -d \
 
 #### 区别
 
-![types of mounts volume](/media/types-of-mounts-volume.png)
+![types of mounts volume](https://i.loli.net/2021/06/17/RdvIuVZhr6Jc5ax.png)
 
 Volumes 是由 Docker 创建和管理，存储在宿主机固定位置（在 linux 上是 / var/lib/docker/volumes/）。 **非 Docker 应用程序不能改动这一位置的数据。** 一个数据卷可以同时被挂载到几个容器中。即使没有正在运行的容器使用这个数据卷，它依然不会清除。可以通过 `docker volume prune` 清除不再使用的数据卷。
 

@@ -19,7 +19,7 @@ weight: 10
 
 > WSL 2 是适用于 Linux 的 Windows 子系统体系结构的一个新版本，它支持适用于 Linux 的 Windows 子系统在 Windows 上运行 ELF64 Linux 二进制文件。 它的主要目标是提高文件系统性能，以及添加完全的系统调用兼容性。
 
-![wsl1 vs wsl2](https://raw.githubusercontent.com/szthanatos/image-host/master/wsl1-vs-wsl2.png?token=AAZJE7LDWNNOLQZEFZE54BC7ID77W)
+![wsl1 vs wsl2](https://i.loli.net/2021/06/17/zHdkqBjmfw6sbUr.png)
 
 wsl1 其实感觉速度更快，和 windows 共享网络，而且没有文件系统的限制。
 
@@ -31,7 +31,7 @@ wsl1 其实感觉速度更快，和 windows 共享网络，而且没有文件系
 
 在 ` 控制面板 `-` 程序 `-  ` 启用或关闭 Windows 功能 ` 中勾选 ` 适用于 Linux 的 Windows 子系统 ` 以及 ` 虚拟机平台 `(wsl2 需要)
 
-![启用 wsl2](https://raw.githubusercontent.com/szthanatos/image-host/master/enable-wsl2.png)
+![启用 wsl2](https://i.loli.net/2021/06/17/NOw3m5flE8Fd62C.png)
 
 或者通过命令行（管理员身份）执行：
 
