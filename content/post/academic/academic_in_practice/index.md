@@ -6,7 +6,7 @@ subtitle: ""
 summary: ""
 authors: []
 tags: ['Hugo', 'Academic']
-categories: []
+categories: ['Hugo', 'Academic']
 date: 2018-12-09T16:34:42+08:00
 lastmod: 2018-12-09T16:34:42+08:00
 featured: false
