@@ -73,7 +73,11 @@ wsl --set-version <distribution name> <versionNumber>
 
 升级到 WSL2 。
 
-### 安装 Linux 系统
+## 安装 Linux 系统
+
+当前有两种方式可选，通过微软商城一键安装或者通过wsl命令手动安装。
+
+### a. 微软商城安装
 
 打开 [Microsoft Store](https://aka.ms/wslstore)，搜索 wsl 即可获取可用 Linux 发行版。
 
@@ -98,49 +102,46 @@ wsl --set-version <distribution name> <versionNumber>
 
 ![安装](https://docs.microsoft.com/zh-cn/windows/wsl/media/ubuntuinstall.png)
 
-## 移动安装位置（可选）
+### b. 手动安装(推荐)
 
-目前 WSL 不支持设置安装路径，使用一段时间后体积会膨胀到 10G+ ，可以通过开源工具 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) 实现将 Linux 安装到任意位置，或者将现有 Linux 子系统移动到任意位置。
+当前 Ubuntu 官方提供多个版本的镜像：
 
-### 安装 LxRunOffline
+- Ubuntu Desktop——桌面版，带GUI界面和常用软件，大约3G；
+- Ubuntu Server——服务器版，默认不带GUI，大约1G；
+- `Ubuntu Cloud`——云版，相比服务器版更精简，大约450M；
+- Ubuntu Core——为树莓派等嵌入式设备打包的特殊版本，最轻，大约300M；
 
-[Scoop](https://scoop.sh/) 是一个 Window 命令行包管理器，可以提供类似 apt/yum 的体验。
+这里我们选择云版镜像。
 
-通过 Scoop 安装 LxRunOffline 方法如下：
+![Ubuntu Cloud](https://i.loli.net/2021/06/18/z5asZRPGOcJEFLj.jpg)
+
+前往 [Ubuntu Cloud Images](https://cloud-images.ubuntu.com/) 官方镜像站，
+下载镜像。
+
+以 [Ubuntu 20.10 LTS](http://cloud-images.ubuntu.com/focal/current/) 为例，
+以 `wsl`为关键字，找到 AMD 或 ARM 平台对应镜像文件，下载。
+
+![Ubuntu 20.10 LTS](https://i.loli.net/2021/06/18/ujlh7mFHDa58AUv.jpg)
+
+之后通过命令
 
 ```powershell
-# 在 Powershell 中执行
-set-executionpolicy remotesigned -scope currentuser
-iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-scoop bucket add extras
-scoop install lxrunoffline
+wsl --import {名称} "{安装位置}" "{镜像位置}"
 ```
 
-或者你可以直接下载安装二进制文件，之后运行 `regsvr32 LxRunOfflineShellExt.dll` 完成。
-
-### 移动
-
-```powershell
-# 在 Powershell 中执行
-# 查看所有已安装的发行版
-lxrunoffline gd
-
-# 移动已存在发行版， 路径格式类似于 D:\wsl\Ubuntu-18.04
-LxRunOffline m -n <发行版名称> -d < 路径 >
-
-# 等待一段时间完成移动，查看发行版当前位置
-LxRunOffline di -n <发行版名称>
-```
+安装系统，注意路径的双引号不要省略。
 
 ## 常用操作
 
 ### wsl 命令
 
-- `wsl --shutdown`  立即终止所有正在运行的分发和 WSL 2 轻型工具虚拟机
-- `wsl -t <分发版>` 终止指定的发行版
-- `wsl -l -v` 列出分发版及其版本信息
-- `wsl --export <分发版> < 文件名 >`  将分发导出到 tar 文件
-- `wsl --import <分发版> < 安装位置 > < 文件名 > [选项]`  将指定的 tar 文件作为新分发进行导入
+- `wsl --shutdown`  立即终止所有正在运行的发行版和 WSL 2 轻型工具虚拟机
+- `wsl -t <发行版>` 终止指定的发行版
+- `wsl -l` 列出发行版
+- `wsl -l -v` 列出发行版及其版本信息
+- `wsl -s <发行版>` 将发行版设为默认
+- `wsl --export <发行版> <文件名>`  将发行版导出到 tar 文件
+- `wsl --import <发行版> <安装位置> <文件名> [选项]`  将指定的 tar 文件作为新发行版进行导入
 
 注意，导入导出发行版会导致无法从 Microsoft 应用管理中管理或更新。
 
@@ -172,6 +173,72 @@ WSL2 可以直接通过 `\\wsl$` 在文件管理器中查看到网络位置上�
 或者你可以从 WSL2 中直接打开当前目录，直接在终端里调用 `explorer.exe .` 就行了，非常 cool~
 
 Windows 的磁盘在 WSL 中都表示为 `/mnt/c|d|e...`，可以看，但是操作还是尽量拷贝到 WSL 目录下，因为性能损失巨大。
+
+### 清理磁盘空间
+
+在 Linux 下回收文件系统上所有未使用的块：
+
+```bash
+sudo fstrim /
+```
+
+对于 Win10 专业版，使用如下命令压缩 WSL 虚拟机占用空间：
+
+```powershell
+wsl --shutdown
+optimize-vhd -Path "{安装位置\ext4.vhdx}" -Mode full
+```
+
+对于家庭版：
+
+```powershell
+wsl --shutdown
+diskpart
+# 打开新的 Diskpart 窗口
+select vdisk file="{安装位置\ext4.vhdx}"
+attach vdisk readonly
+compact vdisk
+detach vdisk
+exit
+```
+
+## 移动安装位置（可选）
+
+通过商城安装的系统无法设置安装路径，使用一段时间后体积会膨胀到 10G+ ，
+可以通过开源工具 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline)
+实现将 Linux 安装到任意位置，或者将现有 Linux 子系统移动到任意位置。
+
+如果是命令行安装，直接 `wsl --export`， `wsl --import` 就好。
+
+### 安装 LxRunOffline
+
+[Scoop](https://scoop.sh/) 是一个 Window 命令行包管理器，可以提供类似 apt/yum 的体验。
+
+通过 Scoop 安装 LxRunOffline 方法如下：
+
+```powershell
+# 在 Powershell 中执行
+set-executionpolicy remotesigned -scope currentuser
+iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+scoop bucket add extras
+scoop install lxrunoffline
+```
+
+或者你可以直接下载安装二进制文件，之后运行 `regsvr32 LxRunOfflineShellExt.dll` 完成。
+
+### 移动
+
+```powershell
+# 在 Powershell 中执行
+# 查看所有已安装的发行版
+lxrunoffline gd
+
+# 移动已存在发行版， 路径格式类似于 D:\wsl\Ubuntu-18.04
+LxRunOffline m -n <发行版名称> -d < 路径 >
+
+# 等待一段时间完成移动，查看发行版当前位置
+LxRunOffline di -n <发行版名称>
+```
 
 ## GPU
 

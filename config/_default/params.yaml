@@ -80,6 +80,8 @@ highlight_languages:
   - go
   - javascript
   - typescript
+  - bash
+  - shell
   - powershell
   - properties
   - sql

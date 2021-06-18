@@ -57,7 +57,7 @@ git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-
 
 在 `.zshrc` 中编辑以下部分：
 
-```properties
+```shell
 # （可选）允许其他用户共用你的配置不弹出警告
 ZSH_DISABLE_COMPFIX="true"
 
@@ -90,6 +90,9 @@ plugins=(
 
 # 配置终端颜色
 export TERM="xterm-256color"
+
+# 保存当前ip到 $IPADDRESS，免得每次都得打命令
+IPADDRESS=$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
 ```
 
 输入 `source .zshrc` 让配置生效，
@@ -109,27 +112,31 @@ Linux 下配置代理本来就略麻烦，Wsl2 又是完整的虚拟机，每次
 将以下内容加入到你的 `.zshrc` 文件中，将 `20809` 改为你的代理的端口：
 
 ```shell
-proxyon() {
+proxy() {
   local host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
   export ALL_PROXY="http://${host_ip}:20809"
   export all_proxy="http://${host_ip}:20809"
-  echo -e "Acquire::http::Proxy \"http://${host_ip}:20809\";" | sudo tee -a /etc/apt/apt.conf > /dev/null
+  echo -e "Acquire::http::Proxy  \"http://${host_ip}:20809\";" | sudo tee -a /etc/apt/apt.conf > /dev/null
   echo -e "Acquire::https::Proxy \"http://${host_ip}:20809\";" | sudo tee -a /etc/apt/apt.conf > /dev/null
+  git config --global http.proxy  http://${host_ip}:20809
+  git config --global https.proxy http://${host_ip}:20809
   curl ip.sb
 }
 
 proxyoff() {
   unset ALL_PROXY
   unset all_proxy
-  sudo sed -i -e '/Acquire::http::Proxy/d' /etc/apt/apt.conf
+  sudo sed -i -e '/Acquire::http::Proxy/d'  /etc/apt/apt.conf
   sudo sed -i -e '/Acquire::https::Proxy/d' /etc/apt/apt.conf
+  git config --global --unset http.proxy
+  git config --global --unset https.proxy
   curl ip.sb
 }
 ```
 
 执行 `proxy` 即可开启代理，`wget`，`curl`，`git`，`apt` 都会走代理。
 
-执行 `unproxy` 关闭。
+执行 `proxyoff` 关闭。
 
 ## 参考
 
