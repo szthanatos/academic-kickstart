@@ -27,6 +27,8 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 toc: false
+_build:
+    list: never
 ---
 
 我觉得网上技术教程都很有坑。
