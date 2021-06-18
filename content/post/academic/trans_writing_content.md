@@ -37,8 +37,6 @@ projects: []
 原文见上方连接。
 {{% /callout %}}
 
-{{% toc %}}
-
 Academic 支持使用 Markdown、LaTeX 数学公式和 Hugo 代码段编写内容。
 此外，可以使用 HTML 以实现高级样式。
 本文概述最常见的格式选项。

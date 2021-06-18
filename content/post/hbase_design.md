@@ -28,8 +28,6 @@ image:
 projects: []
 ---
 
-{{% toc %}}
-
 ## 简介
 
 本指南是对在 HBase 进行字段设计而提供的指导性准则和建议。总体标准、设计方式参照 [Google 开源项目风格指南](https://github.com/google/styleguide) 以及现有项目经验。所有条目均为个人总结，**并不是一份官方标准性质的指南** 。

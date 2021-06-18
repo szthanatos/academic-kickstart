@@ -31,8 +31,6 @@ image:
 projects: []
 ---
 
-{{% toc %}}
-
 ## Deploy key/SSH key(github)
 
 `Deploy key` 是在 ` 项目主页 `-`setting`-`Delpoy keys` 下进行添加，如果勾选 `Allow write access`，则相当于具有对这个项目的读写权限 (否则只能 `clone` 不能 `push`)。**作用范围是这个项目。**

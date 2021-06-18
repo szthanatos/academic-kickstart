@@ -26,6 +26,7 @@ image:
 #   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
 #   Otherwise, set `projects = []`.
 projects: []
+toc: false
 ---
 
 我觉得网上技术教程都很有坑。

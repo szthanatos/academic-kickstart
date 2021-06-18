@@ -28,8 +28,6 @@ image:
 projects: []
 ---
 
-{{% toc %}}
-
 ## 基本环境
 
 底层数据库基于 HBase，检索服务基于 Elasticserach。

@@ -28,8 +28,6 @@ image:
 projects: []
 ---
 
-{{% toc %}}
-
 ## 硬件需求
 
 rancher ha 推荐的架构是单独搭建一个 K8s 集群部署 Rancher，然后再用这个 Rancher 去管理其他的 K8s 集群。

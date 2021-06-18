@@ -28,8 +28,6 @@ image:
 projects: []
 ---
 
-{{% toc %}}
-
 {{% callout note %}}
 这是写给我组里的人看的，顺手粘过来
 {{% /callout %}}

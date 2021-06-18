@@ -37,8 +37,6 @@ projects: []
 原文见上方连接。
 {{% /callout %}}
 
-{{% toc %}}
-
 这是一个使用 Academic 框架管理你的文章的简短指南。
 Academic 提供的内容模板包括出版物、项目、宣讲、新闻 / 博客文章、以及小部件页。
 之后，你可能同样对 [使用 Markdown、LaTeX 数学公式和代码段进行创作](/post/trans_writing_content.md) 感兴趣。

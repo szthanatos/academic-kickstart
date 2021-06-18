@@ -28,8 +28,6 @@ image:
 projects: []
 ---
 
-{{% toc %}}
-
 ## 介绍
 
 `RancherOS` 是 Rancher 推出的一个轻量级的 Linux 内核操作系统，专为容器环境而设计。
